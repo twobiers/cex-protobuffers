@@ -1,0 +1,4 @@
+rootProject.name = 'cex-protocolbuffers'
+
+include("server")
+include("client")
