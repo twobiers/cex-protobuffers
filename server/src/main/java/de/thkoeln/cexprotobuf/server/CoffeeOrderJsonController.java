@@ -8,6 +8,7 @@ import de.thkoeln.cexprotobuf.server.messages.json.OrderCollectionWrapperJsonDto
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("orders")
+@Slf4j
 public class CoffeeOrderJsonController {
 
   private static final List<OrderJsonDto> jsonOrders = new ArrayList<>();
@@ -40,11 +42,13 @@ public class CoffeeOrderJsonController {
 
   @GetMapping(produces = "application/json")
   public OrderCollectionWrapperJsonDto getOrders() {
+    log.info("Responding with orders: {}", jsonOrders);
     return new OrderCollectionWrapperJsonDto(jsonOrders);
   }
 
   @PostMapping(consumes = "application/json")
   public void createOrder(@RequestBody OrderJsonDto order) {
+    log.info("Received order: {}", order);
     jsonOrders.add(order);
   }
 }
