@@ -1,10 +1,10 @@
 package de.thkoeln.cexprotobuf.server;
 
 import com.google.protobuf.Timestamp;
-import de.thkoeln.cexprotobuf.server.messages.proto.OptionProtoDto;
-import de.thkoeln.cexprotobuf.server.messages.proto.OrderCollectionWrapperProtoDto;
-import de.thkoeln.cexprotobuf.server.messages.proto.CupSizeProtoDto;
-import de.thkoeln.cexprotobuf.server.messages.proto.OrderProtoDto;
+import de.thkoeln.cexprotobuf.messages.proto.CupSizeProtoDto;
+import de.thkoeln.cexprotobuf.messages.proto.OptionProtoDto;
+import de.thkoeln.cexprotobuf.messages.proto.OrderCollectionWrapperProtoDto;
+import de.thkoeln.cexprotobuf.messages.proto.OrderProtoDto;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
