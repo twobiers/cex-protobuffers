@@ -1,0 +1,34 @@
+diff --git a/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java b/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java
+index 654c7ed..3b90c76 100644
+--- a/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java
++++ b/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java
+@@ -13,6 +13,7 @@ import de.thkoeln.cexprotobuf.messages.proto.OrderProtoDto;
+ import java.time.Instant;
+ import java.util.ArrayList;
+ import java.util.List;
++import java.util.Random;
+ import lombok.RequiredArgsConstructor;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.PostMapping;
+@@ -58,7 +59,7 @@ public class ProtobufController {
+         .setCash(CashProtoDto.newBuilder()
+             .setAmount(100)
+             .build())
+-        .setPrice(100)
++        .setPrice(new Random().nextDouble())
+         .setId(1)
+         .build();
+     protobufClient.creteOrder(order);
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..11a0e9c 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -22,7 +22,7 @@ message OrderProtoDto {
+     CreditCardProtoDto creditCard = 8;
+   }
+   int64 id = 9;
+-  double price = 10;
++  float price = 10;
+ }
+ 
+ message OptionProtoDto {

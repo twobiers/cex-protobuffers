@@ -1,0 +1,24 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+index b8824c7..a5c5c84 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+@@ -31,7 +31,7 @@ public class CoffeeOrderJsonController {
+             new OptionJsonDto("Sugar", 5)
+         ),
+         new OptionJsonDto("Chocolate", 20),
+-        new CashPaymentDto(100),
++        new CashPaymentDto(Double.MAX_VALUE),
+         1L,
+         100.0
+     );
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java
+index 08635df..68a1e58 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java
+@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
+ @AllArgsConstructor
+ @NoArgsConstructor
+ public class CashPaymentDto implements Payment {
+-  private float amount;
++  private double amount;
+ }

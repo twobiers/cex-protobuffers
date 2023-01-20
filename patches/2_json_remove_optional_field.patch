@@ -1,0 +1,24 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+index b8824c7..2cecc89 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+@@ -30,7 +30,6 @@ public class CoffeeOrderJsonController {
+             new OptionJsonDto("Milk", 10),
+             new OptionJsonDto("Sugar", 5)
+         ),
+-        new OptionJsonDto("Chocolate", 20),
+         new CashPaymentDto(100),
+         1L,
+         100.0
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+index 970cf6c..2c0f645 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+@@ -15,7 +15,6 @@ public class OrderJsonDto {
+   private Instant date;
+   private int count;
+   private List<OptionJsonDto> options;
+-  private OptionJsonDto topping;
+   private Payment payment;
+   private Long id;
+   private Double price;

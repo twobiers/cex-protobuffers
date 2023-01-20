@@ -1,0 +1,26 @@
+diff --git a/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java b/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java
+index 654c7ed..7ce2084 100644
+--- a/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java
++++ b/client/src/main/java/de/thkoeln/cexprotobuf/client/ProtobufController.java
+@@ -59,7 +59,7 @@ public class ProtobufController {
+             .setAmount(100)
+             .build())
+         .setPrice(100)
+-        .setId(1)
++        .setId(Long.MAX_VALUE)
+         .build();
+     protobufClient.creteOrder(order);
+     return "Created an order: \n\n %s".formatted(order);
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..b74e70c 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -21,7 +21,7 @@ message OrderProtoDto {
+     CashProtoDto cash = 7;
+     CreditCardProtoDto creditCard = 8;
+   }
+-  int64 id = 9;
++  int32 id = 9;
+   double price = 10;
+ }
+ 

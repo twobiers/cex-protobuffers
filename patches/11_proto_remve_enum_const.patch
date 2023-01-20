@@ -1,0 +1,25 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..18749b6 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -25,7 +25,7 @@ public class CoffeeOrderProtobufController {
+     var now = Instant.now();
+     var order = OrderProtoDto.newBuilder()
+         .setProduct("Cappuccino")
+-        .setSize(CupSizeProtoDto.TALL)
++        .setSize(CupSizeProtoDto.VENTI)
+         .setDate(Timestamp.newBuilder()
+             .setSeconds(now.getEpochSecond())
+             .setNanos(now.getNano())
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..b454442 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -43,7 +43,6 @@ message CreditCardProtoDto {
+ 
+ enum CupSizeProtoDto {
+   SMALL = 0;
+-  TALL = 1;
+   GRANDE = 2;
+   VENTI = 3;
+ }

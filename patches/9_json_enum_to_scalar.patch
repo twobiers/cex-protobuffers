@@ -1,0 +1,26 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+index b8824c7..68cd485 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+@@ -23,7 +23,7 @@ public class CoffeeOrderJsonController {
+   static {
+     var order = new OrderJsonDto(
+         "Cappuccino",
+-        CupSizeJsonDto.TALL,
++        "Maxi",
+         Instant.now(),
+         2,
+         List.of(
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+index 970cf6c..f8fd410 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
+ @NoArgsConstructor
+ public class OrderJsonDto {
+   private String product;
+-  private CupSizeJsonDto size;
++  private String size;
+   private Instant date;
+   private int count;
+   private List<OptionJsonDto> options;

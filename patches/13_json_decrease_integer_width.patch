@@ -1,0 +1,25 @@
+diff --git a/client/src/main/java/de/thkoeln/cexprotobuf/client/JsonController.java b/client/src/main/java/de/thkoeln/cexprotobuf/client/JsonController.java
+index adffbe9..cdb1d7f 100644
+--- a/client/src/main/java/de/thkoeln/cexprotobuf/client/JsonController.java
++++ b/client/src/main/java/de/thkoeln/cexprotobuf/client/JsonController.java
+@@ -40,7 +40,7 @@ public class JsonController {
+         ),
+         new OptionJsonDto("Chocolate", 20),
+         new CashPaymentDto(100),
+-        1L,
++        Long.MAX_VALUE,
+         100.0
+     );
+     jsonClient.createOrder(order);
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+index 970cf6c..7238f03 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+@@ -17,6 +17,6 @@ public class OrderJsonDto {
+   private List<OptionJsonDto> options;
+   private OptionJsonDto topping;
+   private Payment payment;
+-  private Long id;
++  private Integer id;
+   private Double price;
+ }

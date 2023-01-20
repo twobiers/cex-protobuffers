@@ -1,0 +1,12 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
+index d2250c5..07d53c3 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
+@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+ @JsonSubTypes({
+     @JsonSubTypes.Type(value = CashPaymentDto.class),
+     @JsonSubTypes.Type(value = CreditCardPaymentDto.class),
++    @JsonSubTypes.Type(value = PaypalPaymentDto.class)
+ })
+ public interface Payment {
+ 

@@ -1,0 +1,33 @@
+diff --git a/.gitignore b/.gitignore
+index b83388f..73570c0 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -147,4 +147,3 @@ fabric.properties
+ .idea/**/azureSettings.xml
+ 
+ # End of https://www.toptal.com/developers/gitignore/api/intellij
+-patches
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..aae802a 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -48,6 +48,7 @@ public class CoffeeOrderProtobufController {
+             .build())
+         .setPrice(100)
+         .setId(1)
++        .setCustomer("John Doe")
+         .build();
+     protobufOrders.add(order);
+   }
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..4b6af0e 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -23,6 +23,7 @@ message OrderProtoDto {
+   }
+   int64 id = 9;
+   double price = 10;
++  string customer = 11;
+ }
+ 
+ message OptionProtoDto {

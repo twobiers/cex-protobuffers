@@ -1,0 +1,38 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..e8911b0 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -2,6 +2,7 @@ package de.thkoeln.cexprotobuf.server;
+ 
+ import com.google.protobuf.Timestamp;
+ import de.thkoeln.cexprotobuf.messages.proto.CashProtoDto;
++import de.thkoeln.cexprotobuf.messages.proto.CreditCardProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.CupSizeProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OptionProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OrderCollectionWrapperProtoDto;
+@@ -43,8 +44,11 @@ public class CoffeeOrderProtobufController {
+             .setName("Chocolate")
+             .setPrice(20)
+             .build())
+-        .setCash(CashProtoDto.newBuilder()
+-            .setAmount(100)
++        .setCreditCard(CreditCardProtoDto.newBuilder()
++            .setExpiryDate("12/2025")
++            .setCvv("123")
++            .setNumber("1234-5678-9012-3456")
++            .setOwner("John Doe")
+             .build())
+         .setPrice(100)
+         .setId(1)
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..28b279f 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -18,7 +18,6 @@ message OrderProtoDto {
+   repeated OptionProtoDto options = 5;
+   OptionProtoDto topping = 6;
+   oneof payment {
+-    CashProtoDto cash = 7;
+     CreditCardProtoDto creditCard = 8;
+   }
+   int64 id = 9;

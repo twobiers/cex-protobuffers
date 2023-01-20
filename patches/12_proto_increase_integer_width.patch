@@ -1,0 +1,26 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..8a739d4 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -46,7 +46,7 @@ public class CoffeeOrderProtobufController {
+         .setCash(CashProtoDto.newBuilder()
+             .setAmount(100)
+             .build())
+-        .setPrice(100)
++        .setPrice(Long.MAX_VALUE)
+         .setId(1)
+         .build();
+     protobufOrders.add(order);
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..528bbd5 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -14,7 +14,7 @@ message OrderProtoDto {
+   CupSizeProtoDto size = 1;
+   string product = 2;
+   google.protobuf.Timestamp date = 3;
+-  int32 count = 4;
++  int64 count = 4;
+   repeated OptionProtoDto options = 5;
+   OptionProtoDto topping = 6;
+   oneof payment {

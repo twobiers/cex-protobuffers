@@ -1,0 +1,33 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..a1306e9 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -31,14 +31,10 @@ public class CoffeeOrderProtobufController {
+             .setNanos(now.getNano())
+             .build())
+         .setCount(2)
+-        .addOptions(OptionProtoDto.newBuilder()
++        .setOptions(OptionProtoDto.newBuilder()
+             .setName("Milk")
+             .setPrice(10)
+             .build())
+-        .addOptions(OptionProtoDto.newBuilder()
+-            .setName("Sugar")
+-            .setPrice(5)
+-            .build())
+         .setTopping(OptionProtoDto.newBuilder()
+             .setName("Chocolate")
+             .setPrice(20)
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..5419db2 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -15,7 +15,7 @@ message OrderProtoDto {
+   string product = 2;
+   google.protobuf.Timestamp date = 3;
+   int32 count = 4;
+-  repeated OptionProtoDto options = 5;
++  OptionProtoDto options = 5;
+   OptionProtoDto topping = 6;
+   oneof payment {
+     CashProtoDto cash = 7;

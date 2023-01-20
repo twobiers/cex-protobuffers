@@ -1,0 +1,46 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..61a9725 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -6,6 +6,7 @@ import de.thkoeln.cexprotobuf.messages.proto.CupSizeProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OptionProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OrderCollectionWrapperProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OrderProtoDto;
++import de.thkoeln.cexprotobuf.messages.proto.Product;
+ import java.time.Instant;
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -24,7 +25,7 @@ public class CoffeeOrderProtobufController {
+   static {
+     var now = Instant.now();
+     var order = OrderProtoDto.newBuilder()
+-        .setProduct("Cappuccino")
++        .setProduct(Product.COFFEE)
+         .setSize(CupSizeProtoDto.TALL)
+         .setDate(Timestamp.newBuilder()
+             .setSeconds(now.getEpochSecond())
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..0675872 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -12,7 +12,7 @@ message OrderCollectionWrapperProtoDto {
+ 
+ message OrderProtoDto {
+   CupSizeProtoDto size = 1;
+-  string product = 2;
++  Product product = 2;
+   google.protobuf.Timestamp date = 3;
+   int32 count = 4;
+   repeated OptionProtoDto options = 5;
+@@ -25,6 +25,11 @@ message OrderProtoDto {
+   double price = 10;
+ }
+ 
++enum Product {
++  COFFEE = 0;
++  TEA = 1;
++}
++
+ message OptionProtoDto {
+   string name = 1;
+   float price = 2;

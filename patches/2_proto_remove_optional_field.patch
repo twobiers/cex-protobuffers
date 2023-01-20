@@ -1,0 +1,24 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..4704783 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -46,7 +46,6 @@ public class CoffeeOrderProtobufController {
+         .setCash(CashProtoDto.newBuilder()
+             .setAmount(100)
+             .build())
+-        .setPrice(100)
+         .setId(1)
+         .build();
+     protobufOrders.add(order);
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..467eb54 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -22,7 +22,6 @@ message OrderProtoDto {
+     CreditCardProtoDto creditCard = 8;
+   }
+   int64 id = 9;
+-  double price = 10;
+ }
+ 
+ message OptionProtoDto {

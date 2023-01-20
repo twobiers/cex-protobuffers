@@ -1,0 +1,46 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+index 6f05bba..1259d24 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderProtobufController.java
+@@ -6,6 +6,7 @@ import de.thkoeln.cexprotobuf.messages.proto.CupSizeProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OptionProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OrderCollectionWrapperProtoDto;
+ import de.thkoeln.cexprotobuf.messages.proto.OrderProtoDto;
++import de.thkoeln.cexprotobuf.messages.proto.PaypalProtoDto;
+ import java.time.Instant;
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -43,8 +44,8 @@ public class CoffeeOrderProtobufController {
+             .setName("Chocolate")
+             .setPrice(20)
+             .build())
+-        .setCash(CashProtoDto.newBuilder()
+-            .setAmount(100)
++        .setPaypal(PaypalProtoDto.newBuilder()
++            .setEmail("john.doe@example.com")
+             .build())
+         .setPrice(100)
+         .setId(1)
+diff --git a/server/src/main/proto/coffee_order.proto b/server/src/main/proto/coffee_order.proto
+index a85df41..fa9281a 100644
+--- a/server/src/main/proto/coffee_order.proto
++++ b/server/src/main/proto/coffee_order.proto
+@@ -20,6 +20,7 @@ message OrderProtoDto {
+   oneof payment {
+     CashProtoDto cash = 7;
+     CreditCardProtoDto creditCard = 8;
++    PaypalProtoDto paypal = 11;
+   }
+   int64 id = 9;
+   double price = 10;
+@@ -30,6 +31,10 @@ message OptionProtoDto {
+   float price = 2;
+ }
+ 
++message PaypalProtoDto {
++  string email = 1;
++}
++
+ message CashProtoDto {
+   float amount = 1;
+ }

@@ -1,0 +1,34 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+index b8824c7..a62400e 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+@@ -5,6 +5,7 @@ import de.thkoeln.cexprotobuf.server.messages.json.CupSizeJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OptionJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OrderJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OrderCollectionWrapperJsonDto;
++import de.thkoeln.cexprotobuf.server.messages.json.ProductJsonDto;
+ import java.time.Instant;
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -22,7 +23,7 @@ public class CoffeeOrderJsonController {
+ 
+   static {
+     var order = new OrderJsonDto(
+-        "Cappuccino",
++        ProductJsonDto.COFFEE,
+         CupSizeJsonDto.TALL,
+         Instant.now(),
+         2,
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+index 970cf6c..a8a0a18 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/OrderJsonDto.java
+@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
+ @AllArgsConstructor
+ @NoArgsConstructor
+ public class OrderJsonDto {
+-  private String product;
++  private ProductJsonDto product;
+   private CupSizeJsonDto size;
+   private Instant date;
+   private int count;

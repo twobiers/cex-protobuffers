@@ -1,0 +1,32 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+index b8824c7..ae99f8f 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+@@ -8,6 +8,7 @@ import de.thkoeln.cexprotobuf.server.messages.json.OrderCollectionWrapperJsonDto
+ import java.time.Instant;
+ import java.util.ArrayList;
+ import java.util.List;
++import java.util.Random;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.PostMapping;
+ import org.springframework.web.bind.annotation.RequestBody;
+@@ -31,7 +32,7 @@ public class CoffeeOrderJsonController {
+             new OptionJsonDto("Sugar", 5)
+         ),
+         new OptionJsonDto("Chocolate", 20),
+-        new CashPaymentDto(100),
++        new CashPaymentDto(new Random().nextDouble()),
+         1L,
+         100.0
+     );
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java
+index 08635df..68a1e58 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/CashPaymentDto.java
+@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
+ @AllArgsConstructor
+ @NoArgsConstructor
+ public class CashPaymentDto implements Payment {
+-  private float amount;
++  private double amount;
+ }

@@ -1,0 +1,38 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+index b8824c7..d5bcc9e 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+@@ -1,6 +1,6 @@
+ package de.thkoeln.cexprotobuf.server;
+ 
+-import de.thkoeln.cexprotobuf.server.messages.json.CashPaymentDto;
++import de.thkoeln.cexprotobuf.server.messages.json.CreditCardPaymentDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.CupSizeJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OptionJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OrderJsonDto;
+@@ -31,7 +31,12 @@ public class CoffeeOrderJsonController {
+             new OptionJsonDto("Sugar", 5)
+         ),
+         new OptionJsonDto("Chocolate", 20),
+-        new CashPaymentDto(100),
++        new CreditCardPaymentDto(
++            "12/2025",
++            "123",
++            "1234-5678-9012-3456",
++            "John Doe"
++        ),
+         1L,
+         100.0
+     );
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
+index d2250c5..1a5b254 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
+@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+ 
+ @JsonTypeInfo(use = Id.DEDUCTION)
+ @JsonSubTypes({
+-    @JsonSubTypes.Type(value = CashPaymentDto.class),
+     @JsonSubTypes.Type(value = CreditCardPaymentDto.class),
+ })
+ public interface Payment {
