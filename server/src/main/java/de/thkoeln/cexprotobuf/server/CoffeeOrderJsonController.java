@@ -1,5 +1,6 @@
 package de.thkoeln.cexprotobuf.server;
 
+import de.thkoeln.cexprotobuf.server.messages.json.CashPaymentDto;
 import de.thkoeln.cexprotobuf.server.messages.json.CupSizeJsonDto;
 import de.thkoeln.cexprotobuf.server.messages.json.OptionJsonDto;
 import de.thkoeln.cexprotobuf.server.messages.json.OrderJsonDto;
@@ -28,7 +29,9 @@ public class CoffeeOrderJsonController {
         List.of(
             new OptionJsonDto("Milk", 10),
             new OptionJsonDto("Sugar", 5)
-        )
+        ),
+        new OptionJsonDto("Chocolate", 20),
+        new CashPaymentDto(100)
     );
     jsonOrders.add(order);
   }

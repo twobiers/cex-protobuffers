@@ -13,4 +13,6 @@ public class OrderJsonDto {
   private Instant date;
   private int count;
   private List<OptionJsonDto> options;
+  private OptionJsonDto topping;
+  Payment payment;
 }

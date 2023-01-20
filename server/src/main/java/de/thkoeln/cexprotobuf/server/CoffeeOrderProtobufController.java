@@ -21,12 +21,13 @@ public class CoffeeOrderProtobufController {
   private static final List<OrderProtoDto> protobufOrders = new ArrayList<>();
 
   static {
+    var now = Instant.now();
     var order = OrderProtoDto.newBuilder()
         .setProduct("Cappuccino")
         .setSize(CupSizeProtoDto.TALL)
         .setDate(Timestamp.newBuilder()
-            .setSeconds(Instant.now().getEpochSecond())
-            .setNanos(Instant.now().getNano())
+            .setSeconds(now.getEpochSecond())
+            .setNanos(now.getNano())
             .build())
         .setCount(2)
         .addOptions(OptionProtoDto.newBuilder()

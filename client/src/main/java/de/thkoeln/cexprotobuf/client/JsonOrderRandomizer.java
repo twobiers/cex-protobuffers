@@ -1,5 +1,6 @@
 package de.thkoeln.cexprotobuf.client;
 
+import de.thkoeln.cexprotobuf.client.messages.json.CashPaymentDto;
 import de.thkoeln.cexprotobuf.client.messages.json.CupSizeJsonDto;
 import de.thkoeln.cexprotobuf.client.messages.json.OptionJsonDto;
 import de.thkoeln.cexprotobuf.client.messages.json.OrderJsonDto;
@@ -18,7 +19,9 @@ public class JsonOrderRandomizer {
         randomCupSize(),
         Instant.now(),
         randomCount(),
-        randomOptions()
+        randomOptions(),
+        new OptionJsonDto("Topping", 1),
+        new CashPaymentDto(100)
     );
   }
 
