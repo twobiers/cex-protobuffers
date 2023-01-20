@@ -58,6 +58,8 @@ public class ProtobufController {
         .setCash(CashProtoDto.newBuilder()
             .setAmount(100)
             .build())
+        .setPrice(100)
+        .setId(1)
         .build();
     protobufClient.creteOrder(order);
     return "Created an order: \n\n %s".formatted(order);

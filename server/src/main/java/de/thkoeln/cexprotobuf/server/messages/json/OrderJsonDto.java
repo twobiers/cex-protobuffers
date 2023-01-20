@@ -17,4 +17,6 @@ public class OrderJsonDto {
   private List<OptionJsonDto> options;
   private OptionJsonDto topping;
   private Payment payment;
+  private Long id;
+  private Double price;
 }

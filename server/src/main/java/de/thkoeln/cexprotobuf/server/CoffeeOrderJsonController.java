@@ -31,7 +31,9 @@ public class CoffeeOrderJsonController {
             new OptionJsonDto("Sugar", 5)
         ),
         new OptionJsonDto("Chocolate", 20),
-        new CashPaymentDto(100)
+        new CashPaymentDto(100),
+        1L,
+        100.0
     );
     jsonOrders.add(order);
   }

@@ -21,6 +21,8 @@ message OrderProtoDto {
     CashProtoDto cash = 7;
     CreditCardProtoDto creditCard = 8;
   }
+  int64 id = 9;
+  double price = 10;
 }
 
 message OptionProtoDto {

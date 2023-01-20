@@ -46,6 +46,8 @@ public class CoffeeOrderProtobufController {
         .setCash(CashProtoDto.newBuilder()
             .setAmount(100)
             .build())
+        .setPrice(100)
+        .setId(1)
         .build();
     protobufOrders.add(order);
   }

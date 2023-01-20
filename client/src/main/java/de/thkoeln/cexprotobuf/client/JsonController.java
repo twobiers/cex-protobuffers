@@ -39,7 +39,9 @@ public class JsonController {
             new OptionJsonDto("Sugar", 5)
         ),
         new OptionJsonDto("Chocolate", 20),
-        new CashPaymentDto(100)
+        new CashPaymentDto(100),
+        1L,
+        100.0
     );
     jsonClient.createOrder(order);
     return "Created an order: \n\n %s".formatted(order);
