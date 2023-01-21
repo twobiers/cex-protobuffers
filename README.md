@@ -1,5 +1,26 @@
 # CEX: Protocol Buffers
 
+This repository contains the code experiment for the Coding Excellence course at the Cologne 
+University of Applied Sciences to the research question: 
+
+> To what extent, and under what circumstances, do Protocol Buffers affect the developer experience, 
+> especially in terms of schema transformations, in the communication of software systems compared 
+> to JSON?
+
+The domain is adapted from [Performance evaluation of object serialization libraries in XML, JSON and binary formats](https://doi.org/10.1109/DICTAP.2012.6215346)
+and represents a simple Coffee order system.
+Client and server application are implemented in Java with Spring Boot and support one query and one command.
+The query returns the current orders and the command creates a new order.
+Both are implemented with JSON and Protocol Buffers.
+```
+┌──────────┐         CreateOrder       ┌──────────┐
+│          ├──────────────────────────►│          │
+│  Client  │                           │ Server   │
+│          │                           │          │
+│          │◄──────────────────────────┤          │
+└──────────┘         GetOrders         └──────────┘
+```
+
 ## Prerequisites
 
 * JDK 17 e.g. [Adoptium OpenJDK](https://adoptium.net/)
@@ -7,18 +28,16 @@
 ## Start
 
 **Server**
-
 ```bash
 ./gradlew server:bootRun
 ```
 
 **Client**
-
 ```bash
 ./gradlew client:bootRun
 ```
 
-### Commands/Queries
+## Commands/Queries
 
 **Protocol Buffers**
 
@@ -60,3 +79,26 @@ using `git apply`.
 | Decrease integer width                | [13_proto_decrease_integer_width](./patches/13_proto_decrease_integer_width.patch)                                                                                                         | [13_json_decrease_integer_width](./patches/13_json_decrease_integer_width.patch)                                                                                                        |
 | Increase float precision              | [14_proto_increase_float_precision_1](./patches/14_proto_increase_float_precision_1.patch)<br/>[14_proto_increase_float_precision_2](./patches/14_proto_increase_float_precision_2.patch)  | [14_json_increase_float_precision_1](./patches/14_json_increase_float_precision_1.patch)  <br/>[14_json_increase_float_precision_2](./patches/14_json_increase_float_precision_2.patch) |
 | Decrease float precision              | [15_proto_decrease_float_precision_1](./patches/15_proto_decrease_float_precision_1.patch)<br/> [15_proto_decrease_float_precision_2](./patches/15_proto_decrease_float_precision_2.patch) | [15_json_decrease_float_precision_1](./patches/15_json_decrease_float_precision_1.patch)<br/>[15_json_decrease_float_precision_2](./patches/15_json_decrease_float_precision_2.patch)   |
+
+
+## Example workflow
+
+```sh
+git apply -f patches/1_proto_add_field.patch
+
+./gradlew server:bootRun
+./gradlew client:bootRun
+
+curl http://localhost:8081/protobuf/getOrders
+curl -X POST http://localhost:8081/protobuf/createOrder
+
+git restore .
+
+git apply -f patches/1_json_add_field.patch
+
+./gradlew server:bootRun
+./gradlew client:bootRun
+
+curl http://localhost:8081/json/getOrders
+curl -X POST http://localhost:8081/json/createOrder
+```
