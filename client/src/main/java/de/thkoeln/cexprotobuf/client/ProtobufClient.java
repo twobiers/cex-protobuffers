@@ -21,7 +21,7 @@ public class ProtobufClient {
 
   public ProtobufClient(RestTemplateBuilder restTemplateBuilder) {
     this.restTemplate = restTemplateBuilder
-        .rootUri("http://localhost:8080")
+        .rootUri("http://localhost:3000")
         .additionalMessageConverters(new ProtobufHttpMessageConverter())
         .build();
   }

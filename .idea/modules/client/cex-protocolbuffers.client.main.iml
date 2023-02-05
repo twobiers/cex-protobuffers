@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
   <component name="NewModuleRootManager">
+    <output url="file:///production/cex-protocolbuffers.client.main" />
+    <output-test url="file://$MODULE_DIR$/../../../client/build/classes/java/main" />
     <content url="file://$MODULE_DIR$/../../../client/build/generated/sources/annotationProcessor/java/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../client/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
     </content>
@@ -8,5 +10,16 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../client/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../client/src/main/resources" type="java-resource" />
     </content>
+    <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.21.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-web:6.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.projectlombok:lombok:1.18.24" level="project" />
+    <orderEntry type="module" module-name="de.th-koeln.cex-protocolbuffers.client.main" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-context:6.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.14.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-core:6.0.2" level="project" />
   </component>
 </module>
