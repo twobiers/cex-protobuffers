@@ -84,7 +84,7 @@ using `git apply`.
 ## Example workflow
 
 ```sh
-git apply -f patches/1_proto_add_field.patch
+git apply patches/1_proto_add_field.patch
 
 ./gradlew server:bootRun
 ./gradlew client:bootRun
@@ -92,13 +92,15 @@ git apply -f patches/1_proto_add_field.patch
 curl http://localhost:8081/protobuf/getOrders
 curl -X POST http://localhost:8081/protobuf/createOrder
 
-git restore .
+git apply -R patches/1_proto_add_field.patch
 
-git apply -f patches/1_json_add_field.patch
+git apply patches/1_json_add_field.patch
 
 ./gradlew server:bootRun
 ./gradlew client:bootRun
 
 curl http://localhost:8081/json/getOrders
 curl -X POST http://localhost:8081/json/createOrder
+
+git apply -R patches/1_json_add_field.patch
 ```
