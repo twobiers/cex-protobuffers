@@ -1,3 +1,24 @@
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+index 3e0843a..b30429f 100644
+--- a/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/CoffeeOrderJsonController.java
+@@ -5,6 +5,7 @@ import de.thkoeln.cexprotobuf.server.messages.json.CupSizeJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OptionJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OrderJsonDto;
+ import de.thkoeln.cexprotobuf.server.messages.json.OrderCollectionWrapperJsonDto;
++import de.thkoeln.cexprotobuf.server.messages.json.PaypalPaymentDto;
+ import java.time.Instant;
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -33,7 +34,7 @@ public class CoffeeOrderJsonController {
+             new OptionJsonDto("Sugar", 5)
+         ),
+         new OptionJsonDto("Chocolate", 20),
+-        new CashPaymentDto(100),
++        new PaypalPaymentDto("john.doe@example.org"),
+         1L,
+         100.0
+     );
 diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
 index d2250c5..07d53c3 100644
 --- a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/Payment.java
@@ -9,4 +30,23 @@ index d2250c5..07d53c3 100644
 +    @JsonSubTypes.Type(value = PaypalPaymentDto.class)
  })
  public interface Payment {
- 
+
+diff --git a/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/PaypalPaymentDto.java b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/PaypalPaymentDto.java
+new file mode 100644
+index 0000000..8a5b268
+--- /dev/null
++++ b/server/src/main/java/de/thkoeln/cexprotobuf/server/messages/json/PaypalPaymentDto.java
+@@ -0,0 +1,13 @@
++package de.thkoeln.cexprotobuf.server.messages.json;
++
++import lombok.AllArgsConstructor;
++import lombok.Data;
++import lombok.NoArgsConstructor;
++
++
++@Data
++@AllArgsConstructor
++@NoArgsConstructor
++public class PaypalPaymentDto implements Payment {
++  private String email;
++}
